@@ -1,5 +1,6 @@
 <?php
-$orders = [1];
+use App\Http\Controllers\UserController;
+$orders = UserController::getOrders();
 ?>
 
 @extends('layout')
@@ -12,20 +13,22 @@ $orders = [1];
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Product</th>
+      <th scope="col">Total Products</th>
       <th scope="col">Price</th>
       <th scope="col">Status</th>
       <th scope="col">Date</th>
     </tr>
   </thead>
   <tbody>
+    @foreach ($orders as $order)
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <td>{{$order -> products_count}}</td>
+      <td>{{$order -> price }}</td>
+      <td>{{$order -> status}}</td>
+      <td>{{$order -> address}}</td>
     </tr>
+    @endforeach
   </tbody>
 </table>
 @else

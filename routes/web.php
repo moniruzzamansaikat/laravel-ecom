@@ -12,9 +12,11 @@ Route::get('/login', function () {
 
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logout']);
-Route::get('/cart', [ProductController::class, 'cart']);
-Route::post('/cart', [ProductController::class, 'addToCart']);
-Route::get('/orders', [UserController::class, 'orders']);
-Route::get('/shipping', [ProductController::class, 'shippingPage']);
-Route::post('/shipping', [UserController::class, 'makeOrder']);
-Route::post('/cart/remove', [ProductController::class, 'removeFromCart']);
+Route::get('/p/{product_name}', [ProductController::class, 'product']);
+Route::get('/cart', [ProductController::class, 'cart'])->middleware('userauth');
+Route::post('/cart', [ProductController::class, 'addToCart'])->middleware('userauth');
+Route::get('/orders', [UserController::class, 'orders'])->middleware('userauth');
+Route::get('/shipping', [ProductController::class, 'shippingPage'])->middleware('userauth');
+Route::post('/shipping', [UserController::class, 'makeOrder'])->middleware('userauth');
+Route::post('/cart/remove', [ProductController::class, 'removeFromCart'])->middleware('userauth');
+Route::view('/setting', 'pages.setting');

@@ -32,6 +32,8 @@ if (Session::has('user')) {
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="/cart">Cart({{$total}})</a></li>
+              <li><a class="dropdown-item" href="/orders">Orders</a></li>
+              <li><a class="dropdown-item" href="/setting">Setting</a></li>
               <li><a class="dropdown-item" href="/logout">Logout</a></li>
             </ul>
           </li>

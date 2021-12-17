@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\ProductController;
 use App\Models\Cart;
 use App\Models\Products;
 use Illuminate\Http\Request;
@@ -12,8 +13,14 @@ class ProductController extends Controller
 {
     public function products(Request $req)
     {
-        $products = Products::all();
+        $products = Products::latest()->get();
         return view('pages.home', ["products" => $products]);
+    }
+
+    public function product($product_title)
+    {
+        $product = DB::table('products')->where('title', '=', $product_title)->first();
+        return view('pages.product_detail', ['product' => $product]);
     }
 
     public function cart(Request $req)
@@ -66,6 +73,13 @@ class ProductController extends Controller
 
     public function shippingPage()
     {
-        return view('pages.shipping');
+        $userId = Session::get('user')['id'];
+        $products = DB::table('carts')
+            ->join('products', 'carts.product_id', '=', 'products.id')
+            ->where('carts.user_id', $userId)
+            ->select('products.title', 'products.price', 'products.image')
+            ->get();
+
+        return view('pages.shipping', ['products' => $products]);
     }
 }
