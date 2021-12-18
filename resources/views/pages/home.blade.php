@@ -1,6 +1,10 @@
 @extends("layout")
 @section('page_content')
 
+<!-- home slider -->
+{{View::make("shared.home-slider")}}
+
+<div class="container-fluid" style="margin-top: -250px">
 <!-- first row -->
 <div class="row mt-4">
     <!-- new arrivals products  -->
@@ -126,3 +130,4 @@
     </div>
 </div>
 @endsection
+</div>

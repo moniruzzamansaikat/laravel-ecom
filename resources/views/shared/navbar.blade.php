@@ -7,22 +7,24 @@ if (Session::has('user')) {
 ?>
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Laravel Ecom.</a>
+    <a class="navbar-brand" href="/">
+      <img class="logo" src="/images/logo.png" alt="">
+    </a>
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="navbar-collapse collapse" id="navbarColor01" style="">
-      <ul class="navbar-nav mr-auto">
+      <!-- <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/orders">Orders</a>
         </li>
-      </ul>
+      </ul> -->
 
       <ul class="navbar-nav ms-auto d-flex align-items-center">
         @if(Session::has('user'))
@@ -38,7 +40,20 @@ if (Session::has('user')) {
             </ul>
           </li>
         @else
-          <a class="btn btn-warning btn-sm" href="/login">Login</a>
+          <a href="/login" class="nav-right-menu-item">
+            <i class="fa fa-user"></i>
+            <span>Sign in</span>
+          </a>
+
+          <a href="/orders" class="nav-right-menu-item">
+            <i class="fas fa-shopping-basket "></i>
+            <span>Orders</span>
+          </a>
+
+          <a href="/cart" class="nav-right-menu-item">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+          </a>
         @endif
         </li>
       </ul>
