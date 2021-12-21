@@ -19,4 +19,5 @@ Route::get('/orders', [UserController::class, 'orders'])->middleware('userauth')
 Route::get('/shipping', [ProductController::class, 'shippingPage'])->middleware('userauth');
 Route::post('/shipping', [UserController::class, 'makeOrder'])->middleware('userauth');
 Route::post('/cart/remove', [ProductController::class, 'removeFromCart'])->middleware('userauth');
-Route::view('/setting', 'pages.setting');
+Route::view('/setting', 'pages.setting')->middleware('userauth');
+Route::post('/setting', [UserController::class, 'updateProfile']);

@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('page_content')
+<div class="container-fluid">
 <div class="mb-3">
     <h1 class="my-3 display-4">My Cart</h1>
     <a href="/shipping" class="btn btn-success mb-4">Go to shipping page</a>
@@ -28,5 +29,5 @@
 @endforeach
 </div>
 
-
+</div>
 @endsection

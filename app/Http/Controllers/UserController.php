@@ -66,4 +66,33 @@ class UserController extends Controller
 
         return redirect('/orders');
     }
+
+    public function updateProfile(Request $req)
+    {
+        $name = $req->name;
+        $email = $req->email;
+        $password = $req->password;
+
+        $errors = [];
+        if (strlen($password) < 6) {
+            array_push($errors, 'Password\'s min length is 6!');
+        }
+
+        // if no errors, update data
+        if (count($errors) === 0) {
+            $user_id = User::where('email', '=', $email)->update([
+                'email' => $email,
+                'name' => $name,
+                'password' => Hash::make($password),
+            ]);
+            $req->session()->put('user', [
+                'id' => $user_id,
+                'name' => $name,
+                'email' => $email,
+            ]);
+            return redirect('/setting');
+        } else {
+            return view('pages.setting', ['errors' => $errors]);
+        }
+    }
 }

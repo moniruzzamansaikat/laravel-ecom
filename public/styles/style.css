@@ -22,11 +22,24 @@ img.logo {
 
 /* menus */
 nav.menus {
-    min-height: 60px;
+    min-height: 50px;
     background: #fff;
     border-top: 1px solid #d3d3d3;
     display: flex;
     align-items: center;
+}
+
+@media (max-width: 768px) {
+    nav.menus {
+        width: 100%;
+        overflow-x: scroll;
+    }
+
+    nav.menus::-webkit-scrollbar {
+        display: none;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }
 
 nav.menus ul {
@@ -37,10 +50,12 @@ nav.menus ul {
 
 nav.menus ul {
     display: flex;
+    align-items: center;
 }
 
 nav.menus ul li {
     margin: 0 1rem;
+    min-width: 70px;
 }
 
 nav.menus ul li a {

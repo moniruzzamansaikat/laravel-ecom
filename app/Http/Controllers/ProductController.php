@@ -56,7 +56,7 @@ class ProductController extends Controller
 
     public static function cartItemsCount()
     {
-        $userId = Session::get('user')['id'];
+        $userId = Session::get('user');
         return Cart::where('user_id', $userId)->count();
     }
 

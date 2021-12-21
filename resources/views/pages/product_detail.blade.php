@@ -16,7 +16,7 @@
                         <p>
                             {{$product -> description}}
                         </p>
-                        <form action="cart" method="POST" class="mt-2">
+                        <form action="/cart" method="POST" class="mt-2">
                             @csrf
                             <input type="hidden" name="product_id" value="{{$product -> id}}">
                             <button type="submit" class="btn btn-success btn-sm">Add To Cart</button>
